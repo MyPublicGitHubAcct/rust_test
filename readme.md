@@ -5,6 +5,7 @@
 The following are used below.
 
 - [Rust](https://www.rust-lang.org) language home page.
+- [Rust book](https://doc.rust-lang.org/stable/book/) shows the basics of the language, from the developer.
 - [Cargo book](https://doc.rust-lang.org/cargo/print.html) is helpful to understand working with Rust.
 - [Homebrew](https://brew.sh) is  a package manager for Mac OS.
 - [Zed Editor](https://zed.dev) an editor built in Rust which can be used for Rust, C/C++, Javascript, etc.
