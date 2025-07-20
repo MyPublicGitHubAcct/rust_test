@@ -3,6 +3,18 @@ mod data_types {
     pub mod primitive_types;
 }
 
+mod functions {
+    pub mod functions;
+}
+
+mod ownership {
+    pub mod ownership;
+}
+
+mod reference {
+    pub mod references;
+}
+
 /**
  * main.rs
  * Build and run like "cargo run main.rs"
@@ -14,4 +26,7 @@ fn main() {
     println!("Hello, world!");
     data_types::compound_types::print_compound_examples();
     data_types::primitive_types::print_primitive_examples();
+    functions::functions::print_function_examples();
+    ownership::ownership::print_ownership_examples();
+    reference::references::print_reference_examples();
 }
