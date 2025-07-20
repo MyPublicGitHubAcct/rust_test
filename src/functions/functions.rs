@@ -1,7 +1,3 @@
-/* Words can go here
- * and here
- */
-
 fn person_information(name: &str, age: u32, height: f32) {
     println!(
         "Person's name is {}. They are {} years old and {} cm tall.",

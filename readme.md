@@ -11,7 +11,14 @@ The following are used below.
 - [Zed Editor](https://zed.dev) an editor built in __Rust__ which can be used for __Rust__, __C/C++__, __Javascript__, etc.
 - [Rustlings](https://rustlings.rust-lang.org) is a library used for learning the __Rust__ language.
 - [Learning Rust](https://cglab.ca/~abeinges/blah/too-many-lists/book/README.html) is a blog post describing one way to understand __Rust__.
+- [Rust by Example](https://doc.rust-lang.org/rust-by-example/) is set of examples.
+- [Rust Projects - Redis](https://leanpub.com/rustprojects-redis) is an example recreation of Redis.
 - [Introductory video](https://youtu.be/rQ_J9WH6CGk?si=fIP3MCsNvukSm6bH) by BekBrace.
+- [Rust Audio](https://rust.audio/) is a list of crates useful for audio processing.
+- [Crates.io](https://crates.io/) is a directory of crates.
+- [Xilem](https://github.com/linebender/xilem) is  GUI framework for Rust.
+- [Leptos](https://leptos.dev/) is a web framework for Rust.
+- [Rust Design Patterns](https://rust-unofficial.github.io/patterns/intro.html) is a list of design patterns intended to provide standard ways of accomplishing common tasks.
 
 ### Install Rust
 
