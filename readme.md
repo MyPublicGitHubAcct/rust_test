@@ -13,7 +13,7 @@ The following are used below.
 - [Learning Rust](https://cglab.ca/~abeinges/blah/too-many-lists/book/README.html) is a blog post describing one way to understand __Rust__.
 - [Rust by Example](https://doc.rust-lang.org/rust-by-example/) is set of examples.
 - [Rust Projects - Redis](https://leanpub.com/rustprojects-redis) is an example recreation of Redis.
-- [Introductory video](https://youtu.be/rQ_J9WH6CGk?si=fIP3MCsNvukSm6bH) by BekBrace.
+- [Introductory video](https://youtu.be/rQ_J9WH6CGk?si=fIP3MCsNvukSm6bH) by BekBrace (Amir Bekhit).
 - [Rust Audio](https://rust.audio/) is a list of crates useful for audio processing.
 - [Crates.io](https://crates.io/) is a directory of crates.
 - [Xilem](https://github.com/linebender/xilem) is  GUI framework for Rust.
@@ -78,7 +78,7 @@ cargo <PROJECT NAME> t
 
 The [Rust style guide](https://doc.rust-lang.org/nightly/style-guide/) describes the current conventions to use, and what the linter, _clippy_ will enforce.
 
-All __functions__ and __variables__ should be written in __snake case__ (lower case words separated by an underscore) or __kebab case__ (lower case words separated by a hyphen).
+All _functions_ and _variables_ should be written in __snake case__ (lower case words separated by an underscore) or __kebab case__ (lower case words separated by a hyphen).
 
 __snake case__: ```_hello_world_```.
 
@@ -157,13 +157,173 @@ let _r = &mut = _x;
 
 ## Variables and Mutability
 
+When a _variable_ is immutable, once a value has been bound to a name, it cannot be changed. A _variable_ can be made to be mutable with the ```mut``` keyword. For example:
+
+```rust
+let mut _a: i32 = 5;
+```
+
+By convention, _variables_ that are unused should start with an underscore. The compiler will give a wanrning but will still compile the code if the underscore is missing.
+
+If there are no situations where a _variable_ that is declared using the ```mut``` keyword is changed, the compiler will complain. So, remove this keyword in that situation. Better, don't use it until you have a situation requiring its use.
+
 ## Constants
+
+_Constants_ are similar to immutable variables in that the values they own are not changeable. Unlike _variables_, they cannot be changed to be mutable by using the ```mut``` keyword. Additionally, one must declare the type of a _constant_. By convtention, _constants_ are capitalized. An example:
+
+```rust
+const Y: i32 = 10;
+```
+
+Unlike _variables_, _constants_ can be declared in the global namespace.
 
 ## Shadowing
 
+In __Rust__, one can reuse a _variable_ name and bind it to a different value, effectively changing its value or type. In that case, the first _variable_ is _shadowed_ by the second _variable_. The compiler will see the second _variable_ only. _This does allocate memory on the stack_.
+
+For example, changing value:
+
+```rust
+let x = 5;
+let x = x + 1;
+```
+
+Another example, changing type:
+
+```rust
+let mut age = String::new();
+println!("Type your age: ");
+io::stdin().read_line(&mut age).expect("Error");
+let age:u8 = age.trim().parse().expect("Error");
+```
+
+Another...
+
+```rust
+let spaces = "   ";
+let spaces = spaces.len();
+```
+
+These are commonly used when the _variable_ will be used as a parameter in a function call or a type change is needed. This is also useful when it is not desirable to make the _variable_ mutable.
+
+## Comments
+
+__Rust__ allows for __C/C++__-style comments.
+
+```rust
+// single line comment
+
+/* block comment
+ * Multiple line comments
+ * are fun.
+ */
+```
+
 ## Control Flow
 
+### If Else expressions
+
+```rust
+// if, else
+let age: u16 = 18;
+if age >= 18 {
+    println!("You can drive a car.");
+} else {
+    println!("You cannot drive a car.");
+}
+
+// if, else if, else
+let number: u16 = 6;
+if number % 4 == 0 {
+    println!("number is divisible by 4.");
+} else if number % 3 == 0 {
+    println!("number is divisible by 3.");
+} else if number % 2 == 0 {
+    println!("number is divisible by 2.");
+} else {
+    println!("number is divisible by 2, 3, or 4.");
+}
+```
+
+### Use If in a Let statement
+
+```rust
+let condition = true;
+let number = if condition {
+    5
+} else {
+    6
+};
+println!("Number: {number}");
+```
+
 ## Looping Mechanisms
+
+The _loop_ keyword used without parameters will run forever. The _break_ expression is used to stop the loop.
+
+### Loop expressions
+
+When ```counter``` is equal to 10, this will return 20.
+
+```rust
+let mut counter = 0;
+let result = loop {
+  counter += 1;
+  if counter == 10 {
+      break counter * 2;
+  }
+};
+println!("The result is {result}")
+```
+
+### Loop Labels for nested loops
+
+#### Loop with break and continue
+
+The _break_ and _continue_ statements apply to the inner-most loop by default. So, _Loop Labels_ are used to make clear what is intended & control the flow of processing. _Loop Labels_ are denoted by a single quote at the start of the name.
+
+In the example below, the first use of _break_ stops the inner loop, and the second stops the outer loop.
+
+```rust
+let mut count = 0;
+'counting_up: loop {
+    println!("count = {count}");
+    let mut remaining = 10;
+    loop {
+        println!("remaining = {remaining}");
+        if remaining == 9 {
+            break;
+        }
+        if count == 2 {
+            break 'counting_up;
+        }
+        remaining -= 1;
+    }
+};
+```
+
+#### While loops
+
+A _while_ loop runs as long as a condition is true.
+
+```rust
+let mut number = 3;
+while number != 0 {
+    println!("{number}");
+    number -= 1;
+}
+```
+
+#### Looping through a collection
+
+Similar to a _for_ loop.
+
+```rust
+let a = [1,2,3,4,5,6];
+for element in a {
+    println!("Number is {element}");
+}
+```
 
 ## Structs
 

@@ -3,12 +3,12 @@ mod data_types {
     pub mod primitive_types;
 }
 
-mod functions {
+mod function {
     pub mod functions;
 }
 
 mod ownership {
-    pub mod ownership;
+    pub mod ownerships;
 }
 
 mod reference {
@@ -26,7 +26,7 @@ fn main() {
     println!("Hello, world!");
     data_types::compound_types::print_compound_examples();
     data_types::primitive_types::print_primitive_examples();
-    functions::functions::print_function_examples();
-    ownership::ownership::print_ownership_examples();
+    function::functions::print_function_examples();
+    ownership::ownerships::print_ownership_examples();
     reference::references::print_reference_examples();
 }
