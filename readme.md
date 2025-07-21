@@ -19,6 +19,7 @@ The following are used below.
 - [Xilem](https://github.com/linebender/xilem) is  GUI framework for Rust.
 - [Leptos](https://leptos.dev/) is a web framework for Rust.
 - [Rust Design Patterns](https://rust-unofficial.github.io/patterns/intro.html) is a list of design patterns intended to provide standard ways of accomplishing common tasks.
+- [Embassy framework](https://github.com/embassy-rs/embassy) for embedded.
 
 ### Install Rust
 
@@ -60,6 +61,8 @@ cargo clean
 ```
 
 #### To execute a file or project, the following commands can be used.
+
+The cargo commands will also build the project if it has changed, whereas the __./__ command will not.
 
 ```zsh
 ./your_file_name.rs
