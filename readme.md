@@ -393,6 +393,43 @@ let subject: AlwaysEqual = AlwaysEqual;
 
 ## Enums
 
+An __Enum__ represents a data type similar to a _struct_, but allows each variant to hold different types, and amounts, of data. It can be simple, like
+
+```rust
+enum IpAddrKind {
+    V4,
+    V6
+}
+```
+
+An __Enum__ can also include types for each. However, doing so will cause a need to define _fmt::Display_ for the enum.
+
+```rust
+enum IpAddrEnum {
+    V4(String),
+    V6(String),
+}
+
+impl fmt::Display for IpAddrEnum {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            IpAddrEnum::V4(s) => write!(f, "IP4 Address: {}", s),
+            IpAddrEnum::V6(s) => write!(f, "IP6 Address: {}", s),
+        }
+    }
+}
+
+let my_enum4 = IpAddrEnum::V4(String::from("127.0.0.2"));
+let my_enum6 = IpAddrEnum::V6(String::from("::2"));
+```
+
+If printed, this would result in something like:
+
+```shell
+IP4 Address: 127.0.0.2
+IP6 Address: ::2
+```
+
 ## Error Handling
 
 ## Collection Types

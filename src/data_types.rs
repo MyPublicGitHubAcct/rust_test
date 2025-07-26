@@ -1,3 +1,5 @@
+use std::fmt;
+
 /* ================ Primitive data types ================
  * Integer signed types = i8, il6, i32, etc.
  * Integer unsigned types = u8, u16, u32, etc.
@@ -62,7 +64,7 @@ pub fn print_compound_examples() {
 }
 
 /* ================ Struct ================
- * Example struct & use
+ * ========================================
  */
 struct User {
     active: bool,
@@ -110,4 +112,88 @@ pub fn print_make_user() {
 
     user_two.email = String::from("differentuser2@domain.com");
     println!("User email is now {}", user_two.email);
+}
+
+/* ================ Enum ================
+ * ======================================
+ */
+enum IpAddrKind {
+    V4,
+    V6,
+}
+
+fn check_enum_type(ip_kind: IpAddrKind) {
+    match ip_kind {
+        IpAddrKind::V4 => println!("IpAddrKind::V4"),
+        IpAddrKind::V6 => println!("IpAddrKind::V6"),
+    }
+}
+
+pub fn print_enum_type() {
+    let four: IpAddrKind = IpAddrKind::V4;
+    let six: IpAddrKind = IpAddrKind::V6;
+
+    println!("--- enum checker --");
+    check_enum_type(four);
+    check_enum_type(six);
+}
+
+struct IpAddr {
+    kind: IpAddrKind,
+    address: String,
+}
+
+impl fmt::Display for IpAddrKind {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            IpAddrKind::V4 => write!(f, "version 4"),
+            IpAddrKind::V6 => write!(f, "version 6"),
+        }
+    }
+}
+
+pub fn print_ip_addresses() {
+    let home: IpAddr = IpAddr {
+        kind: IpAddrKind::V4,
+        address: String::from("127.0.0.1"),
+    };
+
+    let loopback: IpAddr = IpAddr {
+        kind: IpAddrKind::V6,
+        address: String::from("::1"),
+    };
+
+    println!("--- ip addresses from a struct ---");
+    println!(
+        "home's IP address is, {}, and its version is {}",
+        home.kind, home.address
+    );
+    println!(
+        "loopback's IP address is, {}, and its version is {}",
+        loopback.kind, loopback.address
+    );
+}
+
+// Assigning types to an enum
+enum IpAddrEnum {
+    V4(String),
+    V6(String),
+}
+
+impl fmt::Display for IpAddrEnum {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            IpAddrEnum::V4(s) => write!(f, "IP4 Address: {}", s),
+            IpAddrEnum::V6(s) => write!(f, "IP6 Address: {}", s),
+        }
+    }
+}
+
+pub fn print_ip_addresses_from_enum() {
+    let my_enum4 = IpAddrEnum::V4(String::from("127.0.0.2"));
+    let my_enum6 = IpAddrEnum::V6(String::from("::2"));
+
+    println!("--- ip addresses from an enum ---");
+    println!("{}", my_enum4);
+    println!("{}", my_enum6);
 }
