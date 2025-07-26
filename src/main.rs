@@ -1,19 +1,12 @@
-mod data_types {
-    pub mod compound_types;
-    pub mod primitive_types;
-}
+mod data_types;
+use data_types::print_primitive_examples;
 
-mod function {
-    pub mod functions;
-}
+mod function;
+use function::functions;
 
-mod ownership {
-    pub mod ownerships;
-}
-
-mod reference {
-    pub mod references;
-}
+mod libs;
+use libs::ownership::ownerships;
+use libs::reference::references;
 
 /**
  * main.rs
@@ -24,9 +17,11 @@ mod reference {
  */
 fn main() {
     println!("Hello, world!");
-    data_types::compound_types::print_compound_examples();
-    data_types::primitive_types::print_primitive_examples();
-    function::functions::print_function_examples();
-    ownership::ownerships::print_ownership_examples();
-    reference::references::print_reference_examples();
+    data_types::print_compound_examples();
+    print_primitive_examples();
+    data_types::print_email_from_struct();
+    data_types::print_make_user();
+    functions::print_function_examples();
+    ownerships::print_ownership_examples();
+    references::print_reference_examples();
 }

@@ -21,12 +21,30 @@ The following are used below.
 - [Rust Design Patterns](https://rust-unofficial.github.io/patterns/intro.html) is a list of design patterns intended to provide standard ways of accomplishing common tasks.
 - [Embassy framework](https://github.com/embassy-rs/embassy) for embedded.
 
-### Install Rust
+### Install & Update Rust
+
+Download & run the script that installs the rustup tool. This will install cargo, clippy, rust-docs, rust-std, rustc, and rustfmt.
 
 ```zsh
-brew install rust
-brew install rustup
-brew install rustc-completion
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+```
+
+Check that the installation worked.
+
+```zsh
+rustc --version
+```
+
+Update Rust
+
+```zsh
+rustup update
+```
+
+Uninstall Rust
+
+```zsh
+rustup self uninstall
 ```
 
 ### Create a new project & open with Zed
@@ -58,6 +76,14 @@ This will remove the compiled file and nay others used to build the project.
 
 ```zsh
 cargo clean
+```
+
+#### To format Rust files
+
+This will remove the compiled file and nay others used to build the project.
+
+```zsh
+cargo fmt
 ```
 
 #### To execute a file or project, the following commands can be used.
@@ -329,6 +355,41 @@ for element in a {
 ```
 
 ## Structs
+
+Similar to a _tuple_, a __struct__ is used to hold multiple pieces of data, and those data can be of different types. However, with a __struct__, the data are named values.
+
+```rust
+// tuple
+let rect: (i32, i32) = (300, 500);
+
+// struct
+struct User {
+    active: bool,
+    user_name: String,
+    email: String,
+    sign_in_count: u64,
+}
+
+let mut user_one = User {
+    active: true,
+    user_name: String::from("Steve"),
+    email: String::from("user@somedomain.com"),
+    sign_in_count: 1,
+}
+```
+
+### Common uses of structs
+
+```rust
+// tuple structs
+struct Color(i32, i32, i32);
+let black: Color(0,0,0);
+let white: Color(255,255,255);
+
+// unit-like struct
+struct AlwaysEqual;
+let subject: AlwaysEqual = AlwaysEqual;
+```
 
 ## Enums
 
