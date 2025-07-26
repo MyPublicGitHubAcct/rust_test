@@ -432,6 +432,47 @@ IP6 Address: ::2
 
 ## Error Handling
 
+The __Rust__ compiler will force you to handle errors, where it perceives the possibility for them. Two _built-in_ error handling types are:
+
+```rust
+// Approach 1, the generic Option<T> enum.
+enum Option<T>{
+    Some(T),  // Represents a value
+    None,     // Represents no value
+}
+
+// Approach 2, the generic Result<T, E> enum
+enum Result<T, E>{
+    Ok(T),  // Represents a value
+    Err(E), // Represents an error
+}
+```
+
+To use them, first, make one of them the return type of a function like this.
+
+```rust
+fn divide(numerator: f64, denominator: f64) -> Option<f64> {
+    if denominator == 0.0 {
+        None
+    } else {
+        Some(numerator / denominator)
+    }
+}
+```
+
+Then, use the return values like this.
+
+```rust
+pub fn print_error_handling_result(numerator: f64, denominator: f64) {
+    let res = divide(numerator, denominator);
+    match res {
+        Some(x) => println!("Result: {x}"),
+        None => println!("Error!"),
+    }
+}
+```
+
+
 ## Collection Types
 
 ### Vectors

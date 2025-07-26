@@ -1,6 +1,8 @@
 mod data_types;
 use data_types::print_primitive_examples;
 
+mod error_handling;
+
 mod function;
 use function::functions;
 
@@ -37,5 +39,11 @@ fn main() {
     ownerships::print_ownership_examples();
     println!("-------------------------");
     references::print_reference_examples();
+    println!("-------------------------");
+    error_handling::print_error_handling_example_one(1.0, 0.0);
+    error_handling::print_error_handling_example_one(1.0, 3.0);
+    println!("-------------------------");
+    error_handling::print_error_handling_example_two(1.0, 0.0);
+    error_handling::print_error_handling_example_two(1.0, 3.0);
     println!("-------------------------");
 }
