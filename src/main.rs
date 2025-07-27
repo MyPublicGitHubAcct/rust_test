@@ -46,4 +46,10 @@ fn main() {
     error_handling::print_error_handling_example_two(1.0, 0.0);
     error_handling::print_error_handling_example_two(1.0, 3.0);
     println!("-------------------------");
+    data_types::print_vector_example();
+    println!("-------------------------");
+    data_types::print_string_example();
+    println!("-------------------------");
+    data_types::print_hash_map_example();
+    println!("-------------------------");
 }

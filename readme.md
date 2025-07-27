@@ -1,5 +1,6 @@
 # Rust Test
 
+
 ## Basics
 
 The following are used below.
@@ -20,6 +21,7 @@ The following are used below.
 - [Leptos](https://leptos.dev/) is a web framework for Rust.
 - [Rust Design Patterns](https://rust-unofficial.github.io/patterns/intro.html) is a list of design patterns intended to provide standard ways of accomplishing common tasks.
 - [Embassy framework](https://github.com/embassy-rs/embassy) for embedded.
+
 
 ### Install & Update Rust
 
@@ -47,6 +49,7 @@ Uninstall Rust
 rustup self uninstall
 ```
 
+
 ### Create a new project & open with Zed
 
 ```zsh
@@ -54,13 +57,16 @@ cargo new <PROJECT NAME>
 zed <PROJECT NAME>
 ```
 
+
 ### Compile & Run
+
 
 #### Before building, you should check the code as this is faster.
 
 ```zsh
 cargo check
 ```
+
 
 #### To compile a file or project, the following commands can be used.
 
@@ -70,6 +76,7 @@ cargo <PROJECT NAME> build
 cargo <PROJECT NAME> b
 ```
 
+
 #### To clean a project
 
 This will remove the compiled file and nay others used to build the project.
@@ -78,6 +85,7 @@ This will remove the compiled file and nay others used to build the project.
 cargo clean
 ```
 
+
 #### To format Rust files
 
 This will remove the compiled file and nay others used to build the project.
@@ -85,6 +93,7 @@ This will remove the compiled file and nay others used to build the project.
 ```zsh
 cargo fmt
 ```
+
 
 #### To execute a file or project, the following commands can be used.
 
@@ -96,12 +105,14 @@ cargo <PROJECT NAME> run
 cargo <PROJECT NAME> r
 ```
 
+
 #### To test a project, the following commands can be used.
 
 ```zsh
 cargo <PROJECT NAME> test
 cargo <PROJECT NAME> t
 ```
+
 
 ## Rust conventions
 
@@ -113,11 +124,13 @@ __snake case__: ```_hello_world_```.
 
 __kebab case__: ```hello-world```.
 
+
 ## Linting
 
 ```zsh
 cargo clippy
 ```
+
 
 ## Data Types
 
@@ -127,11 +140,13 @@ __Rust__ has no such need, so initializing a variable like ```let x = 5;``` will
 
 However, it is a common practice to define the data type manually like ```let x: i32 = 5;```.
 
+
 ## Ownership
 
 Memory allocated needs to be returned when it is no longer needed for it's purpose. Some languages include "garbage collection" which can dramatically slow done processsing and is not adequate for real-time applications e.g., DAWs (signal processing), modular synthesis (embedded).
 
 This can also be a security issue, as expressed in [this US government paper](https://bidenwhitehouse.archives.gov/wp-content/uploads/2024/02/Final-ONCD-Technical-Report.pdf).
+
 
 ### The three rules of Ownership
 
@@ -160,6 +175,7 @@ let s1 = String::from("RUST");
 let s2 = s1;
 ```
 
+
 ## Borrowing and References
 
 _Safety_ refers to the prevention of things like null pointer deferencing, dangling pointers, buffer overflows, and data races. _References_ are used to avoid many of these types of challenges.
@@ -167,6 +183,7 @@ _Safety_ refers to the prevention of things like null pointer deferencing, dangl
 One can make a _Reference_ by _Borrowing_ a value from the owner. _References_ in __Rust__ can be mutable or immutable.
 
 You can not _borrow_ as both mutable and immutable at the same time. Further, you can have _only one mutable refrence_, or _many immutable references_. This is often handled by ensuring that each use of a variable is in its own scope e.g., function.
+
 
 ### An Immutable Reference
 
@@ -176,6 +193,7 @@ let _r = &i32 = &_x;
 *_r += 1;  // This will result in an error as _r is an immutable reference
 ```
 
+
 ### A Mutable Reference
 
 ```rust
@@ -183,6 +201,7 @@ let mut _x: i32 = 5;
 let _r = &mut = _x;
 *_r += 1;  // This will not result in an error as _r is a mutable reference
 ```
+
 
 ## Variables and Mutability
 
@@ -196,6 +215,7 @@ By convention, _variables_ that are unused should start with an underscore. The 
 
 If there are no situations where a _variable_ that is declared using the ```mut``` keyword is changed, the compiler will complain. So, remove this keyword in that situation. Better, don't use it until you have a situation requiring its use.
 
+
 ## Constants
 
 _Constants_ are similar to immutable variables in that the values they own are not changeable. Unlike _variables_, they cannot be changed to be mutable by using the ```mut``` keyword. Additionally, one must declare the type of a _constant_. By convtention, _constants_ are capitalized. An example:
@@ -205,6 +225,7 @@ const Y: i32 = 10;
 ```
 
 Unlike _variables_, _constants_ can be declared in the global namespace.
+
 
 ## Shadowing
 
@@ -235,6 +256,7 @@ let spaces = spaces.len();
 
 These are commonly used when the _variable_ will be used as a parameter in a function call or a type change is needed. This is also useful when it is not desirable to make the _variable_ mutable.
 
+
 ## Comments
 
 __Rust__ allows for __C/C++__-style comments.
@@ -248,7 +270,9 @@ __Rust__ allows for __C/C++__-style comments.
  */
 ```
 
+
 ## Control Flow
+
 
 ### If Else expressions
 
@@ -274,6 +298,7 @@ if number % 4 == 0 {
 }
 ```
 
+
 ### Use If in a Let statement
 
 ```rust
@@ -286,9 +311,11 @@ let number = if condition {
 println!("Number: {number}");
 ```
 
+
 ## Looping Mechanisms
 
 The _loop_ keyword used without parameters will run forever. The _break_ expression is used to stop the loop.
+
 
 ### Loop expressions
 
@@ -305,7 +332,9 @@ let result = loop {
 println!("The result is {result}")
 ```
 
+
 ### Loop Labels for nested loops
+
 
 #### Loop with break and continue
 
@@ -331,6 +360,7 @@ let mut count = 0;
 };
 ```
 
+
 #### While loops
 
 A _while_ loop runs as long as a condition is true.
@@ -343,6 +373,7 @@ while number != 0 {
 }
 ```
 
+
 #### Looping through a collection
 
 Similar to a _for_ loop.
@@ -353,6 +384,7 @@ for element in a {
     println!("Number is {element}");
 }
 ```
+
 
 ## Structs
 
@@ -378,6 +410,7 @@ let mut user_one = User {
 }
 ```
 
+
 ### Common uses of structs
 
 ```rust
@@ -390,6 +423,7 @@ let white: Color(255,255,255);
 struct AlwaysEqual;
 let subject: AlwaysEqual = AlwaysEqual;
 ```
+
 
 ## Enums
 
@@ -429,6 +463,7 @@ If printed, this would result in something like:
 IP4 Address: 127.0.0.2
 IP6 Address: ::2
 ```
+
 
 ## Error Handling
 
@@ -475,8 +510,46 @@ pub fn print_error_handling_result(numerator: f64, denominator: f64) {
 
 ## Collection Types
 
+
 ### Vectors
+
+
+A _vector_ is a set of data of the same type, next to each other in memory.
+
+```rust
+let v: Vec<i32> = Vec::new();          // new empty vector
+v.push(1);
+v.push(2);
+v.push(3);
+
+let v2: Vec<i32> = vec![1, 2, 3]; // new vector with values
+v2.push(4);
+```
+
 
 ### UTF-8 Strings
 
+
+__Rust__ has only one string type in core, _&str_.
+
+The standard library include _String_, which is UTF-8 encoded, which allows for many written languages and characters from many cultures.
+
+
 ### Hash Maps
+
+This collection type allows for storing information like key/value pairs. A hashing function determines how this is stored in memory.
+
+the example below is from the book. The key is the first item (color) & the associated value is the second (the integer).
+
+```rust
+let mut scores = HashMap::new();
+scores.insert(String::from("Blue"), 10);
+scores.insert(String::from("Yellow"), 50);
+
+let team_name = String::from("Blue");
+let score = scores.get(&team_name).copied().unwrap_or(0);
+
+for (key, value) in &scores {
+    println!("{key}: {value}");
+}
+```

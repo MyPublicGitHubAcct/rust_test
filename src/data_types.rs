@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::fmt;
 
 /* ================ Primitive data types ================
@@ -196,4 +197,63 @@ pub fn print_ip_addresses_from_enum() {
     println!("--- ip addresses from an enum ---");
     println!("{}", my_enum4);
     println!("{}", my_enum6);
+}
+
+/* ============== Collection: Vectors ===============
+ * ==================================================
+ */
+pub fn print_vector_example() {
+    let mut v: Vec<i32> = vec![1, 2, 3];
+    v.push(5);
+    v.push(6);
+    v.push(7);
+    v.push(8);
+    v.push(9);
+
+    println!("Vector v contains: {:?}", v);
+
+    let third_item: &i32 = &v[2];
+    println!("The third element is {third_item}");
+
+    let fifth_item: Option<&i32> = v.get(4);
+    match fifth_item {
+        Some(fifth_item) => println!("The fifth item is {fifth_item}"),
+        None => println!("There is no fifth element."),
+    }
+}
+
+/* ============== Collection: Strings ===============
+ * ==================================================
+ */
+pub fn print_string_example() {
+    let s: String = "something".to_string();
+    println!("The value of s = {s}");
+
+    let s: String = String::from("something else");
+    println!("The value of s = {s}");
+
+    let mut s: String = String::from("foo");
+    s.push_str("bar");
+    s.push('!');
+    println!("The value of s = {s}");
+
+    let new_string: String = s + "\nand this too.";
+    println!("The value of new_string = {new_string}");
+}
+
+/* ============== Collection: Hash Maps==============
+ * ==================================================
+ */
+pub fn print_hash_map_example() {
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
+
+    let team_name = String::from("Blue");
+    let score = scores.get(&team_name).copied().unwrap_or(0);
+    println!("score for team {team_name} from the hash map = {score}.");
+
+    for (key, value) in &scores {
+        println!("{key}: {value}");
+    }
 }
