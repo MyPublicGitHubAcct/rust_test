@@ -539,7 +539,7 @@ The standard library include _String_, which is UTF-8 encoded, which allows for 
 
 This collection type allows for storing information like key/value pairs. A hashing function determines how this is stored in memory.
 
-the example below is from the book. The key is the first item (color) & the associated value is the second (the integer).
+The example below is from the book. The key is the first item (color) & the associated value is the second (the integer).
 
 ```rust
 let mut scores = HashMap::new();
