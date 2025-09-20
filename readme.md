@@ -8,7 +8,7 @@ The following are used below.
 - [Rust](https://www.rust-lang.org) language home page.
 - [Rust book](https://doc.rust-lang.org/stable/book/) shows the basics of the __Rust__ language, from the developer.
 - [Cargo book](https://doc.rust-lang.org/cargo/print.html) is helpful to understand working with Rust.
-- [Homebrew](https://brew.sh) is  a package manager for Mac OS.
+- [Homebrew](https://brew.sh) is a package manager for Mac OS.
 - [Zed Editor](https://zed.dev) an editor built in __Rust__ which can be used for __Rust__, __C/C++__, __Javascript__, etc.
 - [Rustlings](https://rustlings.rust-lang.org) is a library used for learning the __Rust__ language.
 - [Learning Rust](https://cglab.ca/~abeinges/blah/too-many-lists/book/README.html) is a blog post describing one way to understand __Rust__.
