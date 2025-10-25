@@ -11,8 +11,8 @@ fn divide_option(numerator: f64, denominator: f64) -> Option<f64> {
 
 pub fn print_error_handling_example_one(numerator: f64, denominator: f64) {
     println!("+++++++one+++++++");
-    println!("numerator = {}", numerator.to_string());
-    println!("denominator = {}", denominator.to_string());
+    println!("numerator = {}", numerator);
+    println!("denominator = {}", denominator);
     let res = divide_option(numerator, denominator);
     match res {
         Some(x) => println!("Result: {x}"),
@@ -30,11 +30,11 @@ fn divide_result(numerator: f64, denominator: f64) -> Result<f64, String> {
 
 pub fn print_error_handling_example_two(numerator: f64, denominator: f64) {
     println!("+++++++two+++++++");
-    println!("numerator = {}", numerator.to_string());
-    println!("denominator = {}", denominator.to_string());
+    println!("numerator = {}", numerator);
+    println!("denominator = {}", denominator);
     let res = divide_result(numerator, denominator);
     match res {
-        Ok(result) => println!("Result: {}", result.to_string()),
+        Ok(result) => println!("Result: {}", result),
         Err(err) => println!("Error: {}", err),
     }
 }
